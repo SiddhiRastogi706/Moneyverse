@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#D99E1F" />
+      <stop offset="50%" stop-color="#F5B82E" />
+      <stop offset="100%" stop-color="#FFE79E" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  <!-- Background circle dark -->
+  <rect width="64" height="64" rx="14" fill="#0A1224" />
+  <rect width="64" height="64" rx="14" stroke="rgba(80,140,255,0.2)" stroke-width="2" />
+  
+  <!-- Stylized Geometric Ascending Money Tree with Coins -->
+  <g filter="url(#glow)">
+    <!-- Bar 1 -->
+    <path d="M12 48L18 36L22 36L16 48Z" fill="url(#goldGrad)" />
+    <!-- Bar 2 -->
+    <path d="M21 48L29 28L33 28L25 48Z" fill="url(#goldGrad)" />
+    <!-- Bar 3 (Trunk / Center high) -->
+    <path d="M30 48L40 18L45 18L35 48Z" fill="url(#goldGrad)" />
+    <!-- Bar 4 (Top diagonal growth branch) -->
+    <path d="M39 28L52 14L55 17L42 31Z" fill="url(#goldGrad)" />
+    <!-- Coin / Leaf accents -->
+    <circle cx="53" cy="14" r="3.5" fill="#FFE79E" />
+    <circle cx="44" cy="17" r="2.5" fill="#FFE79E" />
+    <circle cx="32" cy="27" r="2" fill="#FFE79E" />
+  </g>
+</svg>

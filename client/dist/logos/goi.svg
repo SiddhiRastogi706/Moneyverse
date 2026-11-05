@@ -1,0 +1,31 @@
+<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Rounded Base Container -->
+  <rect width="100" height="100" rx="20" fill="#FFFFFF"/>
+  <rect x="0.5" y="0.5" width="99" height="99" rx="19.5" stroke="#E2E8F0"/>
+  
+  <defs>
+    <linearGradient id="goiNavy" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stopColor="#000080"/>
+      <stop offset="100%" stopColor="#0B1354"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Ashoka Chakra Circular Emblem -->
+  <circle cx="50" cy="42" r="26" fill="#F0F4FF" stroke="url(#goiNavy)" stroke-width="2"/>
+  <circle cx="50" cy="42" r="6" fill="url(#goiNavy)"/>
+  <circle cx="50" cy="42" r="2" fill="#FFFFFF"/>
+
+  <!-- 12 Spokes (Representing the 24-spoke Dharma Chakra) -->
+  <g stroke="url(#goiNavy)" stroke-width="1.5">
+    <line x1="50" y1="18" x2="50" y2="66"/>
+    <line x1="26" y1="42" x2="74" y2="42"/>
+    <line x1="33" y1="25" x2="67" y2="59"/>
+    <line x1="33" y1="59" x2="67" y2="25"/>
+    <line x1="28" y1="33" x2="72" y2="51"/>
+    <line x1="28" y1="51" x2="72" y2="33"/>
+  </g>
+
+  <!-- GOI SOVEREIGN Badge -->
+  <rect x="14" y="75" width="72" height="16" rx="4" fill="url(#goiNavy)"/>
+  <text x="50" y="86.5" font-family="'Plus Jakarta Sans', sans-serif" font-size="8" font-weight="800" fill="#FFFFFF" text-anchor="middle" letter-spacing="0.8">GOVT OF INDIA</text>
+</svg>
