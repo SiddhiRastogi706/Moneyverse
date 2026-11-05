@@ -1,0 +1,27 @@
+<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Rounded Base Container -->
+  <rect width="100" height="100" rx="20" fill="#FFFFFF"/>
+  <rect x="0.5" y="0.5" width="99" height="99" rx="19.5" stroke="#E2E8F0"/>
+  
+  <defs>
+    <linearGradient id="tataBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stopColor="#0066B2"/>
+      <stop offset="100%" stopColor="#003366"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Tata Oval Emblazoned Emblem -->
+  <ellipse cx="50" cy="42" rx="36" ry="24" fill="url(#tataBlue)"/>
+  
+  <!-- Stylized Iconic White 'T' Curves -->
+  <!-- Left Curve -->
+  <path d="M 32 30 C 40 30, 47 38, 47 56 H 50 C 50 35, 41 26, 30 26 Z" fill="#FFFFFF"/>
+  <!-- Right Curve -->
+  <path d="M 68 30 C 60 30, 53 38, 53 56 H 50 C 50 35, 59 26, 70 26 Z" fill="#FFFFFF"/>
+  <!-- Top Center Bar -->
+  <rect x="44" y="26" width="12" height="4" rx="2" fill="#FFFFFF"/>
+
+  <!-- TATA MOTORS Wordmark -->
+  <rect x="14" y="75" width="72" height="16" rx="4" fill="#003366"/>
+  <text x="50" y="86.5" font-family="'Plus Jakarta Sans', sans-serif" font-size="8" font-weight="800" fill="#FFFFFF" text-anchor="middle" letter-spacing="0.8">TATA MOTORS</text>
+</svg>

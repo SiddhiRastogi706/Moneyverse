@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 64" fill="none">
+  <defs>
+    <linearGradient id="goldTree" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#D99E1F" />
+      <stop offset="45%" stop-color="#F5B82E" />
+      <stop offset="100%" stop-color="#FFF0A8" />
+    </linearGradient>
+    <filter id="goldGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2.5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Golden Tree with Coins Ascending Symbol -->
+  <g transform="translate(4, 6)" filter="url(#goldGlow)">
+    <!-- Column 1 -->
+    <path d="M4 42L9 30H14L9 42H4Z" fill="url(#goldTree)" />
+    <!-- Column 2 -->
+    <path d="M12 42L19 22H24L17 42H12Z" fill="url(#goldTree)" />
+    <!-- Column 3 (Tall Trunk) -->
+    <path d="M20 42L29 12H34L25 42H20Z" fill="url(#goldTree)" />
+    <!-- Diagonal Growth Branch -->
+    <path d="M27 24L38 10L42 13L31 27H27Z" fill="url(#goldTree)" />
+    <!-- Coins / Leaves on branch -->
+    <circle cx="39" cy="9" r="3" fill="#FFEAA0" />
+    <circle cx="33" cy="11" r="2.2" fill="#FFEAA0" />
+    <circle cx="23" cy="21" r="1.8" fill="#FFEAA0" />
+  </g>
+
+  <!-- Typography -->
+  <text x="56" y="32" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="22" fill="#FFFFFF" letter-spacing="-0.5">MoneyVerse<tspan fill="#F5B82E">AI</tspan><tspan fill="#FFFFFF" font-weight="600">.com</tspan></text>
+  <text x="57" y="47" font-family="'Inter', sans-serif" font-weight="600" font-size="8.5" fill="#A9B7D0" letter-spacing="2">INVEST · GROW · BUILD WEALTH</text>
+</svg>

@@ -1,0 +1,25 @@
+<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Rounded Base Container -->
+  <rect width="100" height="100" rx="20" fill="#FFFFFF"/>
+  <rect x="0.5" y="0.5" width="99" height="99" rx="19.5" stroke="#E2E8F0"/>
+  
+  <defs>
+    <linearGradient id="iciciRed" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stopColor="#C4161C"/>
+      <stop offset="100%" stopColor="#8A0C11"/>
+    </linearGradient>
+    <linearGradient id="iciciOrange" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stopColor="#F58220"/>
+      <stop offset="100%" stopColor="#D96B14"/>
+    </linearGradient>
+  </defs>
+
+  <!-- ICICI Stylized Ring & Flame -->
+  <circle cx="50" cy="42" r="26" fill="#FFF5F5" stroke="#FED7D7" stroke-width="1.5"/>
+  <path d="M 40 26 C 54 20, 64 30, 60 46 C 56 60, 42 58, 38 48 C 36 42, 40 36, 46 36 C 52 36, 54 40, 52 44" fill="none" stroke="url(#iciciRed)" stroke-width="4.5" stroke-linecap="round"/>
+  <circle cx="48" cy="42" r="4" fill="url(#iciciOrange)"/>
+
+  <!-- ICICI BANK Wordmark -->
+  <rect x="14" y="75" width="72" height="16" rx="4" fill="url(#iciciRed)"/>
+  <text x="50" y="86.5" font-family="'Plus Jakarta Sans', sans-serif" font-size="8" font-weight="900" fill="#FFFFFF" text-anchor="middle" letter-spacing="1">ICICI BANK</text>
+</svg>

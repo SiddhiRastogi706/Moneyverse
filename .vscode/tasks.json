@@ -1,0 +1,28 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Start MoneyVerse AI (Dev Server)",
+      "type": "shell",
+      "command": "cmd.exe",
+      "args": ["/c", "start.bat"],
+      "windows": {
+        "command": "cmd.exe",
+        "args": ["/c", "start.bat"]
+      },
+      "osx": {
+        "command": "bash",
+        "args": ["./start.sh"]
+      },
+      "linux": {
+        "command": "bash",
+        "args": ["./start.sh"]
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": []
+    }
+  ]
+}
