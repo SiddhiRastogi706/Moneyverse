@@ -25,7 +25,23 @@ import { Badge } from '../components/common/Badge';
 import { Navbar } from '../components/layout/Navbar';
 import { Footer } from '../components/layout/Footer';
 import { formatINR } from '../utils/formatters';
+import { UNLISTED_SHARES_CATALOG } from '../data/unlistedSharesData';
+import { InvestmentProduct } from '../types';
 import heroTeamImg from '../assets/hero-team.jpg';
+
+const FEATURED_UNLISTED_IDS = [
+  'unlisted-metropolitan-stock-exchange-msei',
+  'unlisted-oravel-stays-limited-oyo',
+  'unlisted-national-commodity-derivatives-ncdex',
+];
+
+const featuredUnlistedInvestments: InvestmentProduct[] = FEATURED_UNLISTED_IDS.map((id) => {
+  const investment = UNLISTED_SHARES_CATALOG.find((product) => product.id === id);
+  if (!investment) {
+    throw new Error(`Featured investment not found: ${id}`);
+  }
+  return investment;
+});
 
 export const HomePage: React.FC = () => {
   const navigate = useNavigate();
@@ -744,137 +760,55 @@ export const HomePage: React.FC = () => {
             </Button>
           </Card>
 
-          {/* Pick 2: HDFC Top 100 Mutual Fund */}
-          <Card hoverEffect className="p-5 flex flex-col justify-between space-y-4 bg-white border border-slate-200 shadow-sm hover:shadow-xl rounded-2xl transition-all">
-            <div className="space-y-3">
-              <div className="flex items-center justify-between">
-                <div className="w-11 h-11 rounded-xl bg-white border border-slate-200 p-1 flex items-center justify-center flex-shrink-0 shadow-sm overflow-hidden">
-                  <img
-                    src="/logos/hdfc-mf.svg"
-                    alt="HDFC Mutual Fund"
-                    className="w-full h-full object-contain"
-                  />
-                </div>
-                <Badge variant="mutualFunds" size="xs">
-                  Mutual Funds
-                </Badge>
-              </div>
-
-              <div>
-                <h4 className="text-base font-bold text-slate-900">HDFC Top 100 Fund</h4>
-                <p className="text-[11px] text-slate-500 mt-0.5">Large Cap Equity | 5-Star Rated</p>
-              </div>
-
-              <div className="pt-2">
-                <p className="text-2xl font-extrabold font-heading text-emerald-600 tracking-tight">
-                  15.40% <span className="text-sm font-semibold">3Y CAGR</span>
-                </p>
-                <p className="text-[11px] text-slate-500 mt-1">
-                  Min. SIP <span className="text-slate-900 font-medium">₹ 500 / month</span>
-                </p>
-              </div>
-            </div>
-
-            <Button
-              variant="secondary"
-              size="sm"
-              onClick={() => navigate('/investments?category=Mutual+Funds')}
-              rightIcon={<ArrowRight className="w-3.5 h-3.5" />}
-              className="w-full text-xs justify-between bg-slate-50 hover:bg-emerald-50 text-slate-800 hover:text-emerald-600 border border-slate-200 hover:border-emerald-300 font-semibold"
+          {featuredUnlistedInvestments.map((investment) => (
+            <Card
+              key={investment.id}
+              hoverEffect
+              className="p-5 flex flex-col justify-between space-y-4 bg-white border border-slate-200 shadow-sm hover:shadow-xl rounded-2xl transition-all"
             >
-              View Details
-            </Button>
-          </Card>
-
-          {/* Pick 3: Unlisted — Groww (Pre-IPO) */}
-          <Card hoverEffect className="p-5 flex flex-col justify-between space-y-4 bg-white border border-slate-200 shadow-sm hover:shadow-xl rounded-2xl transition-all">
-            <div className="space-y-3">
-              <div className="flex items-center justify-between">
-                <div className="w-11 h-11 rounded-xl bg-white border border-slate-200 p-1 flex items-center justify-center flex-shrink-0 shadow-sm overflow-hidden">
-                  <img
-                    src="/logos/groww.svg"
-                    alt="Groww"
-                    className="w-full h-full object-contain"
-                    onError={(e) => {
-                      e.currentTarget.src = '/unlisted-logos/groww.png';
-                    }}
-                  />
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <div className="w-11 h-11 rounded-xl bg-white border border-slate-200 p-1 flex items-center justify-center flex-shrink-0 shadow-sm overflow-hidden">
+                    <img
+                      src={investment.logoUrl}
+                      alt={investment.title}
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+                  <Badge variant="unlisted" size="xs">
+                    Unlisted Shares
+                  </Badge>
                 </div>
-                <Badge variant="unlisted" size="xs">
-                  Unlisted Shares
-                </Badge>
-              </div>
 
-              <div>
-                <h4 className="text-base font-bold text-slate-900">Groww (Pre-IPO)</h4>
-                <p className="text-[11px] text-slate-500 mt-0.5">3 Years | Private</p>
-              </div>
-
-              <div className="pt-2">
-                <p className="text-2xl font-extrabold font-heading text-purple-600 tracking-tight">
-                  Expected Upside 25%+
-                </p>
-                <p className="text-[11px] text-slate-500 mt-1">
-                  Min. Investment <span className="text-slate-900 font-medium">₹ 2,00,000</span>
-                </p>
-              </div>
-            </div>
-
-            <Button
-              variant="secondary"
-              size="sm"
-              onClick={() => navigate('/investments/inv-groww-unlisted')}
-              rightIcon={<ArrowRight className="w-3.5 h-3.5" />}
-              className="w-full text-xs justify-between bg-slate-50 hover:bg-purple-50 text-slate-800 hover:text-purple-600 border border-slate-200 hover:border-purple-300 font-semibold"
-            >
-              View Details
-            </Button>
-          </Card>
-
-          {/* Pick 4: Reliance Power NCD */}
-          <Card hoverEffect className="p-5 flex flex-col justify-between space-y-4 bg-white border border-slate-200 shadow-sm hover:shadow-xl rounded-2xl transition-all">
-            <div className="space-y-3">
-              <div className="flex items-center justify-between">
-                <div className="w-11 h-11 rounded-xl bg-white border border-slate-200 p-1 flex items-center justify-center flex-shrink-0 shadow-sm overflow-hidden">
-                  <img
-                    src="/logos/reliance.svg"
-                    alt="Reliance Power"
-                    className="w-full h-full object-contain"
-                    onError={(e) => {
-                      e.currentTarget.src = '/unlisted-logos/reliance_retail.png';
-                    }}
-                  />
+                <div>
+                  <h4 className="text-base font-bold text-slate-900">{investment.title}</h4>
+                  <p className="text-[11px] text-slate-500 mt-0.5">
+                    {investment.tenure} | {investment.rating}
+                  </p>
                 </div>
-                <Badge variant="bonds" size="xs">
-                  Bonds
-                </Badge>
+
+                <div className="pt-2">
+                  <p className="text-2xl font-extrabold font-heading text-sky-600 tracking-tight">
+                    {investment.yieldRate} <span className="text-sm font-semibold">/ Share</span>
+                  </p>
+                  <p className="text-[11px] text-slate-500 mt-1">
+                    Min. Investment{' '}
+                    <span className="text-slate-900 font-medium">{formatINR(investment.minInvestment)}</span>
+                  </p>
+                </div>
               </div>
 
-              <div>
-                <h4 className="text-base font-bold text-slate-900">Reliance Power NCD</h4>
-                <p className="text-[11px] text-slate-500 mt-0.5">3 Years | Rated AA+</p>
-              </div>
-
-              <div className="pt-2">
-                <p className="text-2xl font-extrabold font-heading text-sky-600 tracking-tight">
-                  10.50% <span className="text-sm font-semibold">p.a.</span>
-                </p>
-                <p className="text-[11px] text-slate-500 mt-1">
-                  Min. Investment <span className="text-slate-900 font-medium">₹ 1,00,000</span>
-                </p>
-              </div>
-            </div>
-
-            <Button
-              variant="secondary"
-              size="sm"
-              onClick={() => navigate('/investments/inv-reliance-power-ncd')}
-              rightIcon={<ArrowRight className="w-3.5 h-3.5" />}
-              className="w-full text-xs justify-between bg-slate-50 hover:bg-sky-50 text-slate-800 hover:text-sky-600 border border-slate-200 hover:border-sky-300 font-semibold"
-            >
-              View Details
-            </Button>
-          </Card>
+              <Button
+                variant="secondary"
+                size="sm"
+                onClick={() => navigate(`/investments/${investment.id}`)}
+                rightIcon={<ArrowRight className="w-3.5 h-3.5" />}
+                className="w-full text-xs justify-between bg-slate-50 hover:bg-sky-50 text-slate-800 hover:text-sky-600 border border-slate-200 hover:border-sky-300 font-semibold"
+              >
+                View Details
+              </Button>
+            </Card>
+          ))}
         </div>
       </section>
 

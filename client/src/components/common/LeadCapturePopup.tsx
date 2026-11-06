@@ -16,6 +16,8 @@ import confetti from 'canvas-confetti';
 import toast from 'react-hot-toast';
 import { useAdminStore } from '../../store/adminStore';
 
+const LEAD_SUBMITTED_KEY = 'moneyverse_lead_submitted';
+
 export const LeadCapturePopup: React.FC = () => {
   const { isAdminAuthenticated } = useAdminStore();
   const location = useLocation();
@@ -43,15 +45,19 @@ export const LeadCapturePopup: React.FC = () => {
     }
 
     const isDismissed = sessionStorage.getItem('moneyverse_lead_dismissed') === 'true';
-    if (isDismissed) return;
+    const hasSubmitted = localStorage.getItem(LEAD_SUBMITTED_KEY) === 'true';
+    if (isDismissed || hasSubmitted) return;
 
     const timer = setTimeout(() => {
+      if (localStorage.getItem(LEAD_SUBMITTED_KEY) === 'true') return;
       setIsOpen(true);
     }, 5000); // 5 seconds delay requested by user
 
     // Listen for custom trigger event so any explicit button can also open it
     const handleOpenEvent = () => {
-      if (!isAdminSession) setIsOpen(true);
+      if (!isAdminSession && localStorage.getItem(LEAD_SUBMITTED_KEY) !== 'true') {
+        setIsOpen(true);
+      }
     };
     window.addEventListener('open-lead-popup', handleOpenEvent);
 
@@ -74,6 +80,7 @@ export const LeadCapturePopup: React.FC = () => {
       // Debounce if just closed within 500ms or already dismissed
       if (Date.now() - lastCloseTime < 500) return;
       if (sessionStorage.getItem('moneyverse_lead_dismissed') === 'true') return;
+      if (localStorage.getItem(LEAD_SUBMITTED_KEY) === 'true') return;
 
       const target = e.target as HTMLElement;
       if (!target) return;
@@ -138,6 +145,7 @@ export const LeadCapturePopup: React.FC = () => {
         companyName: 'Individual Investor',
         description: message || 'Popup Lead Submission',
       });
+      localStorage.setItem(LEAD_SUBMITTED_KEY, 'true');
 
       // Trigger Confetti Celebration
       confetti({
@@ -376,4 +384,3 @@ export const LeadCapturePopup: React.FC = () => {
     </AnimatePresence>
   );
 };
-

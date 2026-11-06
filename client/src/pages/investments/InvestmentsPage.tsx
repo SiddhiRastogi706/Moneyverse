@@ -44,42 +44,6 @@ export const SAMPLE_INVESTMENTS: InvestmentProduct[] = [
     highlightPoints: ['Capital protection priority', 'Direct depository transfer', 'Tradable on NSE Debt Segment'],
   },
   {
-    id: 'inv-hdfc-mf',
-    title: 'HDFC Balanced Advantage Fund',
-    issuer: 'HDFC Asset Management Co',
-    issuerLogo: 'HDFC-MF',
-    logoUrl: '/logos/hdfc-mf.svg',
-    category: 'Mutual Funds',
-    yieldRate: '15.40% 3Y CAGR',
-    tenure: 'Open Ended (SIP Available)',
-    rating: '5-Star Rated by Value Research',
-    minInvestment: 500,
-    tag: 'Mutual Funds',
-    payoutFrequency: 'Growth / Annual Dividend',
-    isin: 'INF179K01994',
-    description: 'Dynamic asset allocation mutual fund delivering market-beating returns with downside protection.',
-    highlightPoints: ['SEBI regulated tier-1 AMC', 'Disciplined asset rebalancing', 'Direct plan zero brokerage'],
-  },
-  {
-    id: 'inv-groww-unlisted',
-    title: 'Nextbillion Technology (Groww) Pre-IPO',
-    issuer: 'Nextbillion Technology Pvt Ltd · NSDL & CDSL',
-    issuerLogo: 'GROWW',
-    logoUrl: '/unlisted-logos/groww.png',
-    logoBg: 'bg-emerald-900/40 text-emerald-400 border-emerald-500/40',
-    category: 'Unlisted Shares',
-    yieldRate: '₹ 245 / Share',
-    tenure: 'Pre-IPO (Unlisted)',
-    rating: 'Lot: 500',
-    minInvestment: 122500,
-    tag: 'Unlisted Shares',
-    payoutFrequency: 'Capital Gain on IPO',
-    isin: 'INE098U01014',
-    depository: 'NSDL & CDSL',
-    description: 'India\'s leading stockbroker and investment platform preparing for domestic mainboard IPO listing.',
-    highlightPoints: ['Over 10M active transacting users', 'Profitable unit economics', 'Direct CDSL DIS demat delivery'],
-  },
-  {
     id: 'inv-reliance-power-ncd',
     title: 'Reliance Power High Yield NCD',
     issuer: 'Reliance Power Ltd',
@@ -95,23 +59,6 @@ export const SAMPLE_INVESTMENTS: InvestmentProduct[] = [
     isin: 'INE614G07085',
     description: 'Attractive fixed-return secured debentures backed by operating utility solar & thermal assets.',
     highlightPoints: ['Escrow debt servicing mechanism', 'Asset cover ratio 1.5x', 'High monthly/semi-annual cashflow'],
-  },
-  {
-    id: 'inv-sbi-bluechip-mf',
-    title: 'SBI Bluechip Large Cap Equity Fund',
-    issuer: 'SBI Funds Management Ltd',
-    issuerLogo: 'SBI-MF',
-    logoUrl: 'https://www.google.com/s2/favicons?domain=sbimf.com&sz=128',
-    category: 'Mutual Funds',
-    yieldRate: '16.80% 3Y CAGR',
-    tenure: 'Open Ended (SIP Available)',
-    rating: '5-Star Rated (Top Quartile)',
-    minInvestment: 500,
-    tag: 'Mutual Funds',
-    payoutFrequency: 'Compounded Growth',
-    isin: 'INF200K01018',
-    description: 'Premier large cap mutual fund investing across India’s top sovereign and conglomerate industry leaders.',
-    highlightPoints: ['India\'s largest fund house', 'Consistently outperforms Nifty 50', 'Tax efficient long-term capital gains'],
   },
   {
     id: 'inv-reliance-unlisted',
@@ -143,7 +90,8 @@ export const ALL_INVESTMENTS: InvestmentProduct[] = [
 export const InvestmentsPage: React.FC = () => {
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
-  const initialCategory = searchParams.get('category') || 'All';
+  const requestedCategory = searchParams.get('category');
+  const initialCategory = requestedCategory || 'All';
   const { getPrice, customPrices, isItemDeleted, deletedProductIds } = useAdminStore();
 
   const [selectedCategory, setSelectedCategory] = useState<string>(initialCategory);
@@ -260,7 +208,6 @@ export const InvestmentsPage: React.FC = () => {
         { label: 'HDFC Sec', query: 'HDFC Securities' },
         { label: 'PharmEasy', query: 'PharmEasy' },
         { label: 'Lava', query: 'Lava' },
-        { label: 'Groww', query: 'Groww' },
       ];
     }
     return [
@@ -290,7 +237,7 @@ export const InvestmentsPage: React.FC = () => {
             Explore Investment Opportunities
           </h1>
           <p className="text-sm text-slate-600 max-w-2xl leading-relaxed">
-            Diversify across institutional-grade corporate bonds, high-yield mutual funds, and pre-IPO unlisted shares.
+            Diversify across institutional-grade corporate bonds and pre-IPO unlisted shares.
           </p>
         </div>
       </section>
